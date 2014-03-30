@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.proxy.js",
-  "version":        "0.0.2",
+  "version":        "0.0.4",
   "description":    "XMLHttpRequest Proxy",
   "url":            "https://github.com/uupaa/Proxy.js",
   "keywords":       ["XHR", "network", "util", "uupaa", "WebModule"],
@@ -21,6 +21,7 @@
     "output":       "lib/Proxy.min.js"
   },
   "dependencies": {
+    "uupaa.eventlistener.js": "",
     "uupaa.bytearray.js": "",
     "uupaa.uri.js": ""
   },
