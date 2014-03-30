@@ -1,0 +1,139 @@
+<script src="../../node_modules/uupaa.valid.js/lib/Valid.js"></script>
+<script src="../../node_modules/uupaa.bytearray.js/lib/ByteArray.js"></script>
+<script src="../../node_modules/uupaa.task.js/lib/Task.js"></script>
+<script src="../../lib/Proxy.js"></script>
+
+<script>
+function ok(next) {
+  var href = location.href;
+
+  console.log(href);
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("readystatechange", function(event) {
+    console.log("readystatechange", "readyState", this.readyState, "status", this.status);
+    if (this.readyState === 4) {
+      debugger;
+      console.log( this.response );
+      next.pass();
+    }
+  });
+/*
+  xhr.addEventListener("loadstart", function(event) { console.log("loadstart", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("progress",  function(event) { console.log("progress", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("abort",     function(event) { console.log("abort", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("error",     function(event) { console.log("error", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("load",      function(event) { console.log("load", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("timeout",   function(event) { console.log("timeout", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("loadend",   function(event) { console.log("loadend", "readyState", this.readyState, "status", this.status); });
+ */
+
+  xhr.open("GET", href);
+  xhr.responseType = "arraybuffer";
+  xhr.send();
+}
+
+function ng(next) {
+  var href = location.href + ".jpg";
+
+  console.log(href);
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("readystatechange", function(event) {
+    console.log("readystatechange", "readyState", this.readyState, "status", this.status);
+    if (this.readyState === 4) {
+      debugger;
+      console.log( this.response );
+      next.pass();
+    }
+  });
+/*
+  xhr.addEventListener("loadstart", function(event) { console.log("loadstart", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("progress",  function(event) { console.log("progress", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("abort",     function(event) { console.log("abort", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("error",     function(event) { console.log("error", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("load",      function(event) { console.log("load", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("timeout",   function(event) { console.log("timeout", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("loadend",   function(event) { console.log("loadend", "readyState", this.readyState, "status", this.status); });
+ */
+
+  xhr.open("GET", href);
+  xhr.send();
+}
+
+function ok_proxy(next) {
+  var href = location.href;
+
+  console.log(href);
+
+  var xhr = new Proxy();
+
+  xhr.addEventListener("readystatechange", function(event) {
+    console.log("readystatechange", "readyState", this.readyState, "status", this.status);
+    if (this.readyState === 4) {
+      debugger;
+      console.log( this.response );
+      next.pass();
+    }
+  });
+/*
+  xhr.addEventListener("loadstart", function(event) { console.log("loadstart", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("progress",  function(event) { console.log("progress", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("abort",     function(event) { console.log("abort", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("error",     function(event) { console.log("error", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("load",      function(event) { console.log("load", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("timeout",   function(event) { console.log("timeout", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("loadend",   function(event) { console.log("loadend", "readyState", this.readyState, "status", this.status); });
+ */
+
+  xhr.open("GET", href);
+  xhr.responseType = "arraybuffer";
+  xhr.send();
+}
+
+function ng_proxy(next) {
+  var href = location.href + ".jpg";
+
+  console.log(href);
+
+  var xhr = new Proxy();
+
+  xhr.addEventListener("readystatechange", function(event) {
+    console.log("readystatechange", "readyState", this.readyState, "status", this.status);
+    if (this.readyState === 4) {
+      debugger;
+      console.log( this.response );
+      next.pass();
+    }
+  });
+/*
+  xhr.addEventListener("loadstart", function(event) { console.log("loadstart", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("progress",  function(event) { console.log("progress", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("abort",     function(event) { console.log("abort", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("error",     function(event) { console.log("error", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("load",      function(event) { console.log("load", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("timeout",   function(event) { console.log("timeout", "readyState", this.readyState, "status", this.status); });
+  xhr.addEventListener("loadend",   function(event) { console.log("loadend", "readyState", this.readyState, "status", this.status); });
+ */
+
+  xhr.open("GET", href);
+  xhr.send();
+}
+
+//var plan = "ok > ng > ok_proxy > ng_proxy";
+var plan = "ok_proxy ";
+
+Task.run(plan, {
+    ok: function(task) { ok(task); },
+    ng: function(task) { ng(task); },
+    ok_proxy: function(task) { ok_proxy(task); },
+    ng_proxy: function(task) { ng_proxy(task); },
+  }, function(err, buffer) {
+    console.log("finished");
+  });
+
+</script>
+
+
