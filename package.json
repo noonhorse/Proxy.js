@@ -18,7 +18,7 @@
   },
   "x-build": {
     "inputs":       ["lib/Proxy.js"],
-    "output":       "lib/Proxy.min.js"
+    "output":       "release/Proxy.min.js"
   },
   "dependencies": {
     "uupaa.eventlistener.js": "",
@@ -26,6 +26,7 @@
     "uupaa.uri.js": ""
   },
   "devDependencies": {
+    "uupaa.console.js": "",
     "uupaa.valid.js":   "",
     "uupaa.help.js":    "",
     "uupaa.task.js":    "",

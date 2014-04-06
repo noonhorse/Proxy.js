@@ -6,6 +6,6 @@ require("uupaa.eventlistener.js");
 require("uupaa.bytearray.js");
 require("uupaa.nodeproxy.js");
 require("../lib/Proxy.js");
-require("../lib/Proxy.min.js");
+require("../release/Proxy.min.js");
 require("./test.js");
 
