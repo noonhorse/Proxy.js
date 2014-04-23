@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.proxy.js",
-  "version":        "0.0.8",
+  "version":        "0.0.9",
   "description":    "XMLHttpRequest Proxy",
   "url":            "https://github.com/uupaa/Proxy.js",
   "keywords":       ["XHR", "network", "util", "uupaa", "WebModule"],
@@ -14,13 +14,15 @@
     "build-simple": "node node_modules/uupaa.minify.js --verbose --strict --keep --pretty --nowrap --simple",
     "build-release":"node node_modules/uupaa.minify.js --verbose --strict --module",
     "test":         "npm run test-node; npm run test-browser",
+    "test-update":  "node node_modules/uupaa.test.js/bin/Test.js --browser --node",
     "test-node":    "NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js",
     "test-browser": "open test/index.html",
     "lint":         "node node_modules/uupaa.plato.js; open lint/plato/index.html"
   },
   "x-build": {
-    "inputs":       ["lib/Proxy.js"],
-    "output":       "release/Proxy.min.js"
+    "files":        ["lib/Proxy.js"],
+    "output":       "release/Proxy.min.js",
+    "target":       ["Browser", "Worker"]
   },
   "dependencies": {
     "uupaa.eventlistener.js": "",
