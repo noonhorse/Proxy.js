@@ -3,21 +3,18 @@
 
 <script id="worker" type="javascript/worker">
 onmessage = function(event) {
-    var baseDir = event.data.baseDir;
+    var BASE_DIR = event.data.BASE_DIR;
 
-    this.baseDir = baseDir;
-    this.href = event.data.href;
-
-    importScripts(baseDir + "../node_modules/uupaa.console.js/lib/Console.js");
-    importScripts(baseDir + "../node_modules/uupaa.valid.js/lib/Valid.js");
-    importScripts(baseDir + "../node_modules/uupaa.task.js/lib/Task.js");
-    importScripts(baseDir + "../node_modules/uupaa.test.js/lib/Test.js");
-    importScripts(baseDir + "../node_modules/uupaa.eventlistener.js/lib/EventListener.js");
-    importScripts(baseDir + "../node_modules/uupaa.bytearray.js/lib/ByteArray.js");
-    importScripts(baseDir + "../node_modules/uupaa.uri.js/lib/URI.js");
-    importScripts(baseDir + "../lib/Proxy.js");
-    importScripts(baseDir + "../release/Proxy.min.js");
-    importScripts(baseDir + "./test.js");
+    importScripts(BASE_DIR + "../node_modules/uupaa.console.js/lib/Console.js");
+    importScripts(BASE_DIR + "../node_modules/uupaa.valid.js/lib/Valid.js");
+    importScripts(BASE_DIR + "../node_modules/uupaa.task.js/lib/Task.js");
+    importScripts(BASE_DIR + "../node_modules/uupaa.test.js/lib/Test.js");
+    importScripts(BASE_DIR + "../node_modules/uupaa.eventlistener.js/lib/EventListener.js");
+    importScripts(BASE_DIR + "../node_modules/uupaa.bytearray.js/lib/ByteArray.js");
+    importScripts(BASE_DIR + "../node_modules/uupaa.uri.js/lib/URI.js");
+    importScripts(BASE_DIR + "../lib/Proxy.js");
+    importScripts(BASE_DIR + "../release/Proxy.min.js");
+    importScripts(BASE_DIR + "./test.js");
 
     self.postMessage({ error: self.errorMessage || "" });
 };
