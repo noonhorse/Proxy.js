@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.proxy.js",
-  "version":        "0.0.12",
+  "version":        "0.0.13",
   "description":    "XMLHttpRequest Proxy",
   "url":            "https://github.com/uupaa/Proxy.js",
   "keywords":       ["XHR", "network", "util", "uupaa", "WebModule"],
@@ -24,14 +24,15 @@
     "files":        ["lib/Proxy.js"],
     "output":       "release/Proxy.min.js",
     "target":       ["Browser", "Worker"],
+    "labels":       ["@dev"],
     "module": {
       "develop":    ["uupaa.valid.js"],
-      "release":    ["uupaa.eventlistener.js", "uupaa.bytearray.js", "uupaa.uri.js"]
+      "release":    ["uupaa.eventlistener.js", "uupaa.datatype.js", "uupaa.uri.js"]
     }
   },
   "dependencies": {
     "uupaa.eventlistener.js": "",
-    "uupaa.bytearray.js": "",
+    "uupaa.datatype.js": "",
     "uupaa.uri.js": ""
   },
   "devDependencies": {

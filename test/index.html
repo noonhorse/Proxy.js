@@ -6,12 +6,14 @@
 onmessage = function(event) {
     self.MESSAGE = event.data;
 
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.help.js/node_modules/uupaa.reflection.js/lib/Reflection.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.console.js/lib/Console.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.help.js/lib/Help.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.valid.js/lib/Valid.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.task.js/lib/Task.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.test.js/lib/Test.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.eventlistener.js/lib/EventListener.js");
-    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.bytearray.js/lib/ByteArray.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.datatype.js/lib/DataType.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.uri.js/lib/URI.js");
     importScripts(MESSAGE.BASE_DIR + "../lib/Proxy.js");
     importScripts(MESSAGE.BASE_DIR + "../release/Proxy.min.js");
@@ -21,12 +23,14 @@ onmessage = function(event) {
 };
 </script>
 
-<script src="../node_modules/uupaa.valid.js/lib/Valid.js"></script>
+<script src="../node_modules/uupaa.help.js/node_modules/uupaa.reflection.js/lib/Reflection.js"></script>
+<script src="../node_modules/uupaa.console.js/lib/Console.js"></script>
 <script src="../node_modules/uupaa.help.js/lib/Help.js"></script>
+<script src="../node_modules/uupaa.valid.js/lib/Valid.js"></script>
 <script src="../node_modules/uupaa.task.js/lib/Task.js"></script>
 <script src="../node_modules/uupaa.test.js/lib/Test.js"></script>
 <script src="../node_modules/uupaa.eventlistener.js/lib/EventListener.js"></script>
-<script src="../node_modules/uupaa.bytearray.js/lib/ByteArray.js"></script>
+<script src="../node_modules/uupaa.datatype.js/lib/DataType.js"></script>
 <script src="../node_modules/uupaa.uri.js/lib/URI.js"></script>
 <script src="../lib/Proxy.js"></script>
 <script src="../release/Proxy.min.js"></script>
