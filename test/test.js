@@ -32,7 +32,7 @@ if (_runOnBrowser) {
 return test.run().clone();
 
 
-function testProxy(next) {
+function testProxy(test, pass, miss) {
     var href = _runOnWorker  ? this.href
              : _runOnBrowser ? location.href : "";
 
@@ -40,9 +40,9 @@ function testProxy(next) {
             if ( !err &&
                  buffer.xhr   === buffer.proxy &&
                  buffer.proxy === buffer.proxy_get ) {
-                next && next.pass();
+                test.done(pass());
             } else {
-                next && next.miss();
+                test.done(miss());
             }
         });
 
@@ -77,7 +77,7 @@ function testProxy(next) {
     });
 }
 
-function testProxyBuffer(next) {
+function testProxyBuffer(test, pass, miss) {
     var href = _runOnWorker  ? this.href
              : _runOnBrowser ? location.href : "";
 
@@ -94,9 +94,9 @@ function testProxyBuffer(next) {
             }
 
             if (ok) {
-                next && next.pass();
+                test.done(pass());
             } else {
-                next && next.miss();
+                test.done(miss());
             }
         });
 
@@ -127,27 +127,29 @@ function testProxyBuffer(next) {
 
 
 
-function testNodeProxy(next) {
+function testNodeProxy(test, pass, miss) {
     var absolute = "http://example.com/";
     var relative = "./test/index.html";
+    var localFile = process.cwd() + "/test/index.html";
+    var fileScheme = "file://" + process.cwd() + "/test/index.html";
 
-    var task = new Task(2, function(err, buffer) {
+    var task = new Task(4, function(err, buffer) {
             if ( buffer.absolute &&
-                 buffer.relative ) {
+                 buffer.relative &&
+                 buffer.localFile &&
+                 buffer.fileScheme ) {
 
-                next && next.pass();
+                test.done(pass());
             } else {
-                next && next.miss();
+                test.done(miss());
             }
         });
-
-    console.log(process.cwd());
 
     // ----------------------------------------------
     var proxy = new NodeProxy();
 
     proxy.on("load", function(event) {
-        console.log(CONSOLE_COLOR.GREEN + "\nURL: " + absolute + "\n" + CONSOLE_COLOR.YELLOW + this.responseText + CONSOLE_COLOR.CLEAR);
+        console.log(CONSOLE_COLOR.GREEN + "\n  absolute: " + absolute + "\n" + CONSOLE_COLOR.YELLOW + this.responseText.slice(0, 20) + CONSOLE_COLOR.CLEAR);
 
         task.set("absolute", this.responseText);
         task.pass();
@@ -155,6 +157,8 @@ function testNodeProxy(next) {
       //console.log(proxy.getAllResponseHeaders());
     });
     proxy.on("error", function() {
+        debugger;
+        console.log("Error Proxy");
         task.miss();
     });
     proxy.open("GET", absolute);
@@ -164,16 +168,53 @@ function testNodeProxy(next) {
     var proxy2 = new NodeProxy();
 
     proxy2.on("load", function(event) {
-        console.log(CONSOLE_COLOR.GREEN + "\nFILE: " + relative + "\n" + CONSOLE_COLOR.YELLOW + this.responseText + CONSOLE_COLOR.CLEAR);
+        console.log(CONSOLE_COLOR.GREEN + "\n  relative: " + relative + "\n" + CONSOLE_COLOR.YELLOW + this.responseText.slice(0, 20) + CONSOLE_COLOR.CLEAR);
 
         task.set("relative", this.responseText);
         task.pass();
     });
     proxy2.on("error", function() {
+        debugger;
+        console.log("Error Proxy2");
         task.miss();
     });
     proxy2.open("GET", relative);
     proxy2.send();
+
+
+    // ----------------------------------------------
+    var proxy3 = new NodeProxy();
+
+    proxy3.on("load", function(event) {
+        console.log(CONSOLE_COLOR.GREEN + "\n  localFile: " + localFile + "\n" + CONSOLE_COLOR.YELLOW + this.responseText.slice(0, 20) + CONSOLE_COLOR.CLEAR);
+
+        task.set("localFile", this.responseText);
+        task.pass();
+    });
+    proxy3.on("error", function() {
+        debugger;
+        console.log("Error Proxy3");
+        task.miss();
+    });
+    proxy3.open("GET", localFile);
+    proxy3.send();
+
+    // ----------------------------------------------
+    var proxy4 = new NodeProxy();
+
+    proxy4.on("load", function(event) {
+        console.log(CONSOLE_COLOR.GREEN + "\n  fileScheme: " + fileScheme + "\n" + CONSOLE_COLOR.YELLOW + this.responseText.slice(0, 20) + CONSOLE_COLOR.CLEAR);
+
+        task.set("fileScheme", this.responseText);
+        task.pass();
+    });
+    proxy4.on("error", function() {
+        debugger;
+        console.log("Error Proxy4");
+        task.miss();
+    });
+    proxy4.open("GET", fileScheme);
+    proxy4.send();
 }
 
 

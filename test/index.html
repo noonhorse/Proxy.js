@@ -6,7 +6,7 @@
 onmessage = function(event) {
     self.MESSAGE = event.data;
 
-    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.help.js/node_modules/uupaa.reflection.js/lib/Reflection.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.reflection.js/lib/Reflection.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.console.js/lib/Console.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.help.js/lib/Help.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.valid.js/lib/Valid.js");
@@ -17,13 +17,13 @@ onmessage = function(event) {
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.uri.js/lib/URI.js");
     importScripts(MESSAGE.BASE_DIR + "../lib/Proxy.js");
     importScripts(MESSAGE.BASE_DIR + "../release/Proxy.min.js");
-    importScripts(MESSAGE.BASE_DIR + "./test.js");
+    importScripts(MESSAGE.BASE_DIR + "./test.js?_=1407406823167");
 
     self.postMessage({ error: self.errorMessage || "" });
 };
 </script>
 
-<script src="../node_modules/uupaa.help.js/node_modules/uupaa.reflection.js/lib/Reflection.js"></script>
+<script src="../node_modules/uupaa.reflection.js/lib/Reflection.js"></script>
 <script src="../node_modules/uupaa.console.js/lib/Console.js"></script>
 <script src="../node_modules/uupaa.help.js/lib/Help.js"></script>
 <script src="../node_modules/uupaa.valid.js/lib/Valid.js"></script>
@@ -34,6 +34,6 @@ onmessage = function(event) {
 <script src="../node_modules/uupaa.uri.js/lib/URI.js"></script>
 <script src="../lib/Proxy.js"></script>
 <script src="../release/Proxy.min.js"></script>
-<script src="./test.js"></script>
+<script src="./test.js?=_1407406823168"></script>
 
 </body></html>

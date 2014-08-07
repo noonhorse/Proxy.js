@@ -1,9 +1,9 @@
 {
   "name":           "uupaa.proxy.js",
-  "version":        "0.0.13",
-  "description":    "XMLHttpRequest Proxy",
+  "version":        "0.1.0",
+  "description":    "XMLHttpRequest Proxy for Browser and WebWorkers",
   "url":            "https://github.com/uupaa/Proxy.js",
-  "keywords":       ["XHR", "network", "util", "uupaa", "WebModule"],
+  "keywords":       ["XMLHttpRequest", "XHR", "request", "network", "proxy", "util", "uupaa", "WebModule", "Unstable"],
   "repository": {
     "type":         "git",
     "url":          "https://github.com/uupaa/Proxy.js.git"
@@ -18,13 +18,18 @@
     "test-debug":   "NODE_ENV=production NODE_PATH=lib node --debug-brk --harmony test/index.node.js",
     "test-node":    "NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js",
     "test-browser": "open test/index.html",
+    "test-sim":     "node node_modules/uupaa.iphonesimulator.js --run --port 8585 --xcache --open test/index.html",
+    "server":       "http-server -c-1 -p 8585 &",
+    "server-stop":  "",
+    "server-kill":  "killall -- node /usr/local/bin/http-server -p 8585 ; exit 0",
+    "hint":         "jshint lib/*.js",
     "lint":         "node node_modules/uupaa.plato.js; open lint/plato/index.html"
   },
   "x-build": {
-    "files":        ["lib/Proxy.js"],
+    "source":       ["lib/Proxy.js"],
     "output":       "release/Proxy.min.js",
     "target":       ["Browser", "Worker"],
-    "labels":       ["@dev"],
+    "label":        ["@dev"],
     "module": {
       "develop":    ["uupaa.valid.js"],
       "release":    ["uupaa.eventlistener.js", "uupaa.datatype.js", "uupaa.uri.js"]
@@ -37,6 +42,8 @@
   },
   "devDependencies": {
     "uupaa.nodemodule.js": "",
+    "uupaa.reflection.js": "",
+    "uupaa.iphonesimulator.js": "",
     "uupaa.console.js": "",
     "uupaa.valid.js":   "",
     "uupaa.help.js":    "",
